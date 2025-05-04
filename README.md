@@ -1,10 +1,12 @@
-<p align="center">
-  <img src="assets/images/logo.png" alt="SmartPresence Logo" width="200"/>
-</p>
 
 # SmartPresence
 
 (Sistem Absensi Siswa Berbasis Web)
+
+<p align="center">
+  <img src="assets/images/logo.png" alt="SmartPresence Logo" width="200"/>
+</p>
+
 
 Muhammad Ali Sadikin  
 D0223332  
