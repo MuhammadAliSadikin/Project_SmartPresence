@@ -1,61 +1,74 @@
 # SmartPresence
-<p align="center" style="margin-bottom: 0px;">SmartPresence</p>
-<p align="center" style="margin-top: 0;">Sistem Absensi Siswa Berbasis Web</p>
-<p align="center"> <img src="Logo_Proyek.png" width="300" alt="Logo SmartPresence" /> </p>
 
-<p align="center">Muhammad Ali Sadikin</p>
-<p align="center">D0223332</p></br>
-<p align="center">Framework Web Based</p>
-<p align="center">2025</p>
-Role dan Fitur
-1. Admin
-Fokus: Kelola sistem & pengguna
+(Sistem Absensi Siswa Berbasis Web)
 
-Fitur	Deskripsi
-Kelola Data Siswa	CRUD data siswa
-Kelola Pengguna	Menentukan peran dan akses
-Statistik Absensi	Melihat laporan kehadiran siswa
-2. Guru
-Fokus: Mengelola kehadiran siswa
+Muhammad Ali Sadikin  
+D0223332  
+Framework Web Based  
+2025  
 
-Fitur	Deskripsi
-Mencatat Kehadiran	Input status hadir atau tidak hadir
-Memperbarui Data Siswa	Edit data siswa jika diperlukan
-3. Orang Tua
-Fokus: Memantau kehadiran anak
+---
 
-Fitur	Deskripsi
-Lihat Riwayat Absensi	Cek kehadiran anak berdasarkan akun orang tua
-Tabel-tabel database beserta field dan tipe datanya
-1. Tabel {roles} (Peran Pengguna)
-Field	Tipe Data	Keterangan
-id	INT(PK)	Primary Key
-name	VARCHAR(100)	Nama peran (admin, guru, orang tua)
-2. Tabel {users} (Data Pengguna)
-Field	Tipe Data	Keterangan
-id	INT(PK)	Primary Key
-name	VARCHAR(100)	Nama pengguna
-email	VARCHAR(100)	Email unik
-password	VARCHAR(255)	Password login
-role_id	INT(FK)	Relasi ke {roles.id}
-3. Tabel {students} (Data Siswa)
-Field	Tipe Data	Keterangan
-id	INT(PK)	Primary Key
-name	VARCHAR(100)	Nama siswa
-class	VARCHAR(50)	Kelas siswa
-4. Tabel {parent_student} (Hubungan Orang Tua & Siswa)
-Field	Tipe Data	Keterangan
-id	INT(PK)	Primary Key
-parent_id	INT(FK)	Relasi ke {users.id} (Orang Tua)
-student_id	INT(FK)	Relasi ke {students.id} (Siswa)
-5. Tabel {attendances} (Catatan Absensi)
-Field	Tipe Data	Keterangan
-id	INT(PK)	Primary Key
-student_id	INT(FK)	Relasi ke {students.id}
-attendance_date	DATE	Tanggal absensi
-status	ENUM	'Hadir', 'Tidak Hadir'
-Jenis relasi dan tabel yang berelasi
-Tabel Asal	Tabel Tujuan	Jenis Relasi	Keterangan
-{roles.id}	{users.role_id}	One-to-Many	Satu role bisa dimiliki banyak pengguna
-{users.id}	{students.id}	Many-to-Many	Satu orang tua bisa memiliki beberapa anak
-{students.id}	{attendances.student_id}	One-to-Many	Satu siswa bisa memiliki banyak catatan absensi
+## Role dan Fitur-fiturnya
+
+| **Role**     | **Fitur**                                                                              |
+|--------------|------------------------------------------------------------------------------------------|
+| Admin        | Mengelola data siswa, mengatur pengguna, melihat statistik absensi.                     |
+| Guru         | Mencatat kehadiran siswa dan memperbaharui data siswa.                                  |
+| Orang Tua    | Melihat Riwayat kehadiran anak melalui akun mereka.                                     |
+
+---
+
+## Tabel-Tabel Database Beserta Field dan Tipe Datanya
+
+### Tabel `roles` (Peran pengguna)
+
+| Nama Field | Tipe Data            | Keterangan                   |
+|------------|----------------------|------------------------------|
+| id         | Integer (Primary Key)| ID unik setiap peran         |
+| name       | String               | Nama peran (admin, guru, orangtuan) |
+
+### Tabel `users` (Data pengguna)
+
+| Nama Field | Tipe Data            | Keterangan                        |
+|------------|----------------------|-----------------------------------|
+| id         | Integer (Primary Key)| ID pengguna                       |
+| name       | String               | Nama Pengguna                     |
+| email      | String (Unique)      | Email untuk login                 |
+| password   | String               | Password login                    |
+| role_id    | Integer (Foreign Key)| Hubungan ke table `roles`         |
+
+### Tabel `students` (Data siswa)
+
+| Nama Field | Tipe Data            | Keterangan        |
+|------------|----------------------|-------------------|
+| id         | Integer (Primary Key)| ID siswa          |
+| name       | String               | Nama siswa        |
+| class      | String               | Kelas siswa       |
+
+### Tabel `parent_student` (Hubungan Orang Tua dengan Siswa)
+
+| Nama Field | Tipe Data            | Keterangan                            |
+|------------|----------------------|---------------------------------------|
+| id         | Integer (Primary Key)| ID unik hubungan                      |
+| parent_id  | Integer (Foreign Key)| ID orang tua (mengacu ke `users`)     |
+| student_id | Integer (Foreign Key)| ID siswa (mengacu ke `students`)      |
+
+### Tabel `attendances` (Catatan Absensi)
+
+| Nama Field       | Tipe Data             | Keterangan              |
+|------------------|-----------------------|--------------------------|
+| id               | Integer (Primary Key) | ID unik absensi          |
+| student_id       | Integer (Foreign Key) | ID siswa yang hadir      |
+| attendance_date  | Date                  | Tanggal absensi          |
+| status           | Enum (Hadir, Tidak Hadir) | Status kehadiran siswa |
+
+---
+
+## Jenis Relasi dan Tabel yang Berelasi
+
+| Relasi       | Tabel yang Berelasi         | Jenis                                        |
+|--------------|-----------------------------|----------------------------------------------|
+| One-to-Many  | `roles` ➝ `users`           | Satu role bisa dimiliki banyak pengguna      |
+| Many-to-Many | `users` ➝ `students` melalui `parent_student` | Satu orang tua bisa memiliki beberapa anak |
+| One-to-Many  | `students` ➝ `attendances`  | Satu siswa bisa memiliki banyak catatan absensi |
