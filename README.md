@@ -6,18 +6,12 @@
 </p>
 
 
-### <p align="center">AHMAD KHANIF IZZAH ARIFIN</p>
-### <p align="center">D0223511</p></br>
+### <p align="center">Muhammad Ali Sadikin  </p>
+### <p align="center">D0223332  </p></br>
 ### <p align="center">Framework Web Based</p>
 ### <p align="center">2025</p>
 
 
-
-
-Muhammad Ali Sadikin  
-D0223332  
-Framework Web Based  
-2025  
 
 ---
 
