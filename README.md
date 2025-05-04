@@ -1,11 +1,17 @@
-
-# SmartPresence
-
-(Sistem Absensi Siswa Berbasis Web)
+# <p align="center" style="margin-bottom: 0px;"> SmartPresence</p>
+## <p align="center" style="margin-top: 0;">Sistem Absensi Siswa Berbasis Web</p>
 
 <p align="center">
-  <img src="LogoUnsulbar.png" alt="SmartPresence Logo" width="200"/>
+  <img src="LogoUnsulbar.png" alt="SmartPresence Logo" width="300"/>
 </p>
+
+
+### <p align="center">AHMAD KHANIF IZZAH ARIFIN</p>
+### <p align="center">D0223511</p></br>
+### <p align="center">Framework Web Based</p>
+### <p align="center">2025</p>
+
+
 
 
 Muhammad Ali Sadikin  
